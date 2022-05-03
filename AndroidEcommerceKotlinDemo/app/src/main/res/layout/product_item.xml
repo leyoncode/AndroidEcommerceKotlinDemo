@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#E4D8FF"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/productlabel"
+        app:layout_constraintEnd_toEndOf="@+id/productlabel"
+        app:layout_constraintStart_toStartOf="@+id/productlabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/productlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/productPrice"
+        app:layout_constraintEnd_toEndOf="@+id/productPrice"
+        app:layout_constraintStart_toStartOf="@+id/productPrice"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <Button
+        android:id="@+id/buyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buyButton"
+        app:layout_constraintEnd_toEndOf="@+id/buyButton"
+        app:layout_constraintStart_toStartOf="@+id/buyButton"
+        app:layout_constraintTop_toBottomOf="@+id/productlabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
