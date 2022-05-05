@@ -1,10 +1,12 @@
 package com.leyon.androidecommercekotlindemo.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Product
@@ -32,11 +34,12 @@ class HomeRecyclerViewAdapter : RecyclerView.Adapter<HomeRecyclerViewAdapter.Pro
     }
 
     override fun getItemCount(): Int {
+        //Log.e("Count", ("item count = " + (productList.size).toString()))
         return this.productList.size
     }
 
     fun setList(productList : List<Product>) {
-        this.productList = productList as MutableList<Product>
+        this.productList = productList
         notifyDataSetChanged()
     }
 

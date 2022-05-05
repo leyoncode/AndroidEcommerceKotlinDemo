@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.leyon.androidecommercekotlindemo.model.repository.ProductRepository
 import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Product
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -17,20 +18,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insertProduct(product: Product) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             productRepo.insertProduct(product)
         }
     }
 
 
     fun updateProduct(product: Product) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             productRepo.updateProduct(product)
         }
     }
 
     fun deleteProduct(product: Product) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             productRepo.deleteProduct(product)
         }
     }
