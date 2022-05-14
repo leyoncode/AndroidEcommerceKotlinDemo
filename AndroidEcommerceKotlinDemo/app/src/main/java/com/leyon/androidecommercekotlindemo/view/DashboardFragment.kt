@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.databinding.FragmentDashboardBinding
 import com.leyon.androidecommercekotlindemo.viewmodel.DashboardViewModel
-import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class DashboardFragment : Fragment() {
 
@@ -47,5 +50,15 @@ class DashboardFragment : Fragment() {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         ).get(DashboardViewModel::class.java)
+
+        val recyclerAdapter = DashboardRecyclerViewAdapter(requireContext(), dashboardViewModel)
+        dashboardViewModel.getTransactionsLiveData().observe(viewLifecycleOwner, Observer {
+            recyclerAdapter.setList(it)
+        })
+
+        val recycler : RecyclerView = view.findViewById<RecyclerView>(R.id.dashboardRecyclerView)
+        recycler.layoutManager = LinearLayoutManager(context)
+        //recycler.layoutManager = GridLayoutManager(context,2)
+        recycler.adapter = recyclerAdapter
     }
 }

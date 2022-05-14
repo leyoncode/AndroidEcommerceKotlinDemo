@@ -32,6 +32,7 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
 
         holder.productName.text = productItem.productName
         holder.productPrice.text = productItem.productPrice.toString()
+        holder.productStock.text = productItem.productStock.toString()
         //holder.productImage.setImageBitmap()
 
         holder.buyButton.setOnClickListener{
@@ -73,6 +74,7 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
         val productImage : ImageView = itemView.findViewById<ImageView>(R.id.productImage)
         val productName : TextView = itemView.findViewById<TextView>(R.id.productlabel)
         val productPrice : TextView = itemView.findViewById<TextView>(R.id.productPrice)
+        val productStock : TextView = itemView.findViewById<TextView>(R.id.productStock)
 
         val buyButton : Button = itemView.findViewById<Button>(R.id.buyButton)
     }

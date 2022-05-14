@@ -22,4 +22,7 @@ interface TransactionsDAO {
 
     @Query("SELECT * FROM transactions WHERE transactionId = :id LIMIT 1")
     suspend fun getTransactionById(id : Long) : Transactions
+
+    @Query("SELECT * FROM products WHERE productId = :id")
+    suspend fun getProductById(id : Long) : Products
 }
