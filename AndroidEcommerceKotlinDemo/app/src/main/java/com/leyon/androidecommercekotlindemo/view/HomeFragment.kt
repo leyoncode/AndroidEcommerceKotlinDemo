@@ -1,24 +1,16 @@
 package com.leyon.androidecommercekotlindemo.view
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.databinding.FragmentHomeBinding
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Product
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -56,7 +48,7 @@ class HomeFragment : Fragment() {
         ).get(HomeViewModel::class.java)
 
 
-        val recyclerAdapter = HomeRecyclerViewAdapter()
+        val recyclerAdapter = HomeRecyclerViewAdapter(requireContext(), homeViewModel)
         homeViewModel.getProductLiveData().observe(viewLifecycleOwner, Observer {
             recyclerAdapter.setList(it)
         })
@@ -65,5 +57,7 @@ class HomeFragment : Fragment() {
         //recycler.layoutManager = LinearLayoutManager(context)
         recycler.layoutManager = GridLayoutManager(context,2)
         recycler.adapter = recyclerAdapter
+
+
     }
 }

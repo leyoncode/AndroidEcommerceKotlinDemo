@@ -3,7 +3,9 @@ package com.leyon.androidecommercekotlindemo.viewmodel
 import android.app.Application
 import androidx.lifecycle.*
 import com.leyon.androidecommercekotlindemo.model.repository.ProductRepository
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Product
+import com.leyon.androidecommercekotlindemo.model.repository.TransactionsRepository
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -12,32 +14,34 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val productRepo : ProductRepository = ProductRepository(application.applicationContext)
 
-    fun getProductLiveData() : LiveData<List<Product>> {
+    // Functions for interacting with Products entity data in database
+
+    fun getProductLiveData() : LiveData<List<Products>> {
 
         return productRepo.products.asLiveData()
     }
 
-    fun insertProduct(product: Product) {
+    fun insertProduct(products: Products) {
         viewModelScope.launch(Dispatchers.IO) {
-            productRepo.insertProduct(product)
+            productRepo.insertProduct(products)
         }
     }
 
 
-    fun updateProduct(product: Product) {
+    fun updateProduct(products: Products) {
         viewModelScope.launch(Dispatchers.IO) {
-            productRepo.updateProduct(product)
+            productRepo.updateProduct(products)
         }
     }
 
-    fun deleteProduct(product: Product) {
+    fun deleteProduct(products: Products) {
         viewModelScope.launch(Dispatchers.IO) {
-            productRepo.deleteProduct(product)
+            productRepo.deleteProduct(products)
         }
     }
 
-    fun getProductById(id : Long) : Product {
-        var x : Product ?= null
+    fun getProductById(id : Long) : Products {
+        var x : Products ?= null
         runBlocking {
             x = productRepo.getProductById(id)
         }

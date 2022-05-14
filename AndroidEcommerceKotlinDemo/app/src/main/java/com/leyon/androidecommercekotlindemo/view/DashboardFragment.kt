@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.leyon.androidecommercekotlindemo.databinding.FragmentDashboardBinding
 import com.leyon.androidecommercekotlindemo.viewmodel.DashboardViewModel
+import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+
+    private lateinit var dashboardViewModel: DashboardViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,15 +32,20 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dashboardViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        ).get(DashboardViewModel::class.java)
     }
 }

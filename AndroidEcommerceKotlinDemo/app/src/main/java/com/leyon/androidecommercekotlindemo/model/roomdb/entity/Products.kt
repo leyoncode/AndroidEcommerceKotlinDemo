@@ -5,12 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "products")
-data class Product(
+data class Products(
     @ColumnInfo(name = "productName")
-    val productName: String,
+    var productName: String,
 
     @ColumnInfo(name = "productPrice")
-    val productPrice: Double,
+    var productPrice: Double,
 
     @ColumnInfo(name = "productStock")
     var productStock: Int

@@ -5,16 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.leyon.androidecommercekotlindemo.model.roomdb.dao.ProductDAO
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Product
+import com.leyon.androidecommercekotlindemo.model.roomdb.dao.TransactionsDAO
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
 
 @Database(
-    entities = [Product::class],
+    entities = [Products::class, Transactions::class],
     version = 1
 )
 abstract class ProductsDatabase: RoomDatabase() {
 
     //call like> ProductsDatabase(activity!!).getProductsDAO()
     abstract fun getProductsDAO() : ProductDAO
+    abstract fun getTransactionsDAO() : TransactionsDAO
 
     companion object {
 
