@@ -36,7 +36,7 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
         //holder.productImage.setImageBitmap()
 
         holder.buyButton.setOnClickListener{
-            buyProduct(productItem.productId)
+            buyProduct(position)
         }
     }
 
@@ -50,7 +50,8 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
         notifyDataSetChanged()
     }
 
-    fun buyProduct(productID : Long) {
+    fun buyProduct(position: Int) {
+        //use position as index to get product from productsList and update it using viewModel
 
         MaterialAlertDialogBuilder(context)
             .setTitle("Verify Purchase")
@@ -63,10 +64,15 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
             }
             .setPositiveButton("Confirm") { dialog, which ->
                 // buy product when select confirm
+                val tmpRef = productsList[position] //get a temporary reference to the product
+
+                //reducing only one stock for now. later add form to manually select no of items
+                var updateProduct : Products = Products(tmpRef.productName, tmpRef.productPrice, tmpRef.productStock - 1)
+                updateProduct.productId = tmpRef.productId
+
+                viewModel.updateProduct(updateProduct) //send updated product to database
             }
             .show()
-
-
     }
 
     //view holder class

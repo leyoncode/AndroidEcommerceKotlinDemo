@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.leyon.androidecommercekotlindemo.AddNewProductDialog
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.databinding.FragmentHomeBinding
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
@@ -18,6 +20,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private lateinit var homeViewModel : HomeViewModel
+
+    private lateinit var addNewProductFAB : FloatingActionButton
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,5 +61,17 @@ class HomeFragment : Fragment() {
         //recycler.layoutManager = LinearLayoutManager(context)
         recycler.layoutManager = GridLayoutManager(context,2)
         recycler.adapter = recyclerAdapter
+
+        // FAB used to open dialog to add new product to room database
+        addNewProductFAB = view.findViewById(R.id.addProductFAB)
+
+        addNewProductFAB.setOnClickListener{
+            showAddNewProductDialog(homeViewModel) //homeViewModel needed for database access
+        }
+    }
+
+    private fun showAddNewProductDialog(homeViewModel: HomeViewModel) {
+        val addDialog : AddNewProductDialog = AddNewProductDialog(homeViewModel)
+        addDialog.show(childFragmentManager,"AddNewProductDialog")
     }
 }
