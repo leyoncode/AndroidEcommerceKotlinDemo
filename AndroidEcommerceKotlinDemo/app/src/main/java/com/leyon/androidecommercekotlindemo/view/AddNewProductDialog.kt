@@ -1,15 +1,16 @@
-package com.leyon.androidecommercekotlindemo
+package com.leyon.androidecommercekotlindemo.view
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.DialogFragment
+import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
@@ -42,14 +43,12 @@ class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
                 //if not empty, then add to database
                 addProductToDb(
                     newProductNameET.text.toString(),
-                    newProductPriceET.text.toString().toDouble(), //TODO : check null or app crash
+                    newProductPriceET.text.toString().toDouble(),
                     newProductStockET.text.toString().toInt()
                 )
             } else {
                 Toast.makeText(context, "Must fill all entries", Toast.LENGTH_SHORT).show()
             }
-
-
         }
     }
 
@@ -64,6 +63,10 @@ class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
         homeViewModel.insertProduct(newProduct)
 
         Toast.makeText(context, "New Product Added", Toast.LENGTH_SHORT).show()
+
+
+        //send notification to user after new product have been added
+        sendNotification("New Product", "Product ${newProductName} have been added to store.\nPrice:${newProductPrice}\nStock available:${newProductStock}")
 
         dismiss()
     }
@@ -82,6 +85,25 @@ class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
         }
 
         return false
+    }
+
+    //send notification
+    private fun sendNotification(textTitle : String, textContent : String) {
+        val CHANNEL_ID = getString(R.string.channel_id)
+        var builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_baseline_notification_icon_24)
+            .setContentTitle(textTitle)
+            .setContentText(textContent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(textContent))
+            .setAutoCancel(true)
+
+        //val notificationManager = NotificationManagerCompat.from(requireContext())
+        with(NotificationManagerCompat.from(requireContext())) {
+            // notificationId is a unique int for each notification that you must define
+            notify(0, builder.build())
+        }
     }
 
 }

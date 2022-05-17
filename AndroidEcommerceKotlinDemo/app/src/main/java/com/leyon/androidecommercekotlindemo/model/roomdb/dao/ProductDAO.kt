@@ -21,4 +21,5 @@ interface ProductDAO {
 
     @Query("SELECT * FROM products WHERE productId = :id LIMIT 1")
     suspend fun getProductById(id : Long) : Products
+
 }

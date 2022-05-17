@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ProductViewHolder>() {
@@ -71,6 +72,10 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
                 updateProduct.productId = tmpRef.productId
 
                 viewModel.updateProduct(updateProduct) //send updated product to database
+
+                //add sale transaction
+                var newTransaction : Transactions = Transactions(tmpRef.productId, 1 , tmpRef.productPrice * 1)
+                viewModel.insertSaleToTransactions(newTransaction)
             }
             .show()
     }

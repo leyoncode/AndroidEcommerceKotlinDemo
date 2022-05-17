@@ -13,6 +13,7 @@ import kotlinx.coroutines.runBlocking
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val productRepo : ProductRepository = ProductRepository(application.applicationContext)
+    private val transactionsRepo : TransactionsRepository = TransactionsRepository(application.applicationContext)
 
     // Functions for interacting with Products entity data in database
 
@@ -46,5 +47,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             x = productRepo.getProductById(id)
         }
         return x!!
+    }
+
+    fun insertSaleToTransactions(transactions: Transactions) {
+        viewModelScope.launch(Dispatchers.IO) {
+            transactionsRepo.insertTransaction(transactions)
+        }
     }
 }

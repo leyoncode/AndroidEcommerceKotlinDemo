@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.leyon.androidecommercekotlindemo.AddNewProductDialog
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.databinding.FragmentHomeBinding
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel

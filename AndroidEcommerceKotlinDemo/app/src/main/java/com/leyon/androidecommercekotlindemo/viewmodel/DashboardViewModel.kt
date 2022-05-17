@@ -3,6 +3,7 @@ package com.leyon.androidecommercekotlindemo.viewmodel
 import android.app.Application
 import androidx.lifecycle.*
 import com.leyon.androidecommercekotlindemo.model.repository.TransactionsRepository
+import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
 import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,6 +43,14 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         var x : Transactions?= null
         runBlocking {
             x = transactionRepo.getTransactionById(id)
+        }
+        return x!!
+    }
+
+    fun getProductById(id : Long) : Products {
+        var x : Products?= null
+        runBlocking {
+            x = transactionRepo.getProductById(id)
         }
         return x!!
     }

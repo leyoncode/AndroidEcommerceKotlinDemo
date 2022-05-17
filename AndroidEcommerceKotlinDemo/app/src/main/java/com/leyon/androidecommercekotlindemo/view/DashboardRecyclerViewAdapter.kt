@@ -28,8 +28,9 @@ class DashboardRecyclerViewAdapter(val context: Context, val viewModel: Dashboar
         val transaction : Transactions = transactionsList[position]
 
         holder.transactionId.text = transaction.transactionId.toString()
-        // TODO: set product name.
-        //holder.productName = transaction.
+
+        val tmp = viewModel.getProductById(transaction.productIdBought)
+        holder.productName.text = tmp.productName
         holder.noOfItems.text = transaction.numProductItems.toString()
         holder.totalPrice.text = transaction.totalPrice.toString()
     }
