@@ -108,4 +108,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
+    <TextView
+        android:id="@+id/borderBottom1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

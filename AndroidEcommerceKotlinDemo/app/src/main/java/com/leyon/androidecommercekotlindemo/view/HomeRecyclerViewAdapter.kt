@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leyon.androidecommercekotlindemo.R
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ProductViewHolder>() {
@@ -51,7 +51,7 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
         notifyDataSetChanged()
     }
 
-    fun buyProduct(position: Int) {
+    private fun buyProduct(position: Int) {
         //use position as index to get product from productsList and update it using viewModel
 
         MaterialAlertDialogBuilder(context)
@@ -68,13 +68,13 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
                 val tmpRef = productsList[position] //get a temporary reference to the product
 
                 //reducing only one stock for now. later add form to manually select no of items
-                var updateProduct : Products = Products(tmpRef.productName, tmpRef.productPrice, tmpRef.productStock - 1)
+                val updateProduct : Products = Products(tmpRef.productName, tmpRef.productPrice, tmpRef.productStock - 1)
                 updateProduct.productId = tmpRef.productId
 
                 viewModel.updateProduct(updateProduct) //send updated product to database
 
                 //add sale transaction
-                var newTransaction : Transactions = Transactions(tmpRef.productId, 1 , tmpRef.productPrice * 1)
+                val newTransaction : Transactions = Transactions(tmpRef.productId, 1 , tmpRef.productPrice * 1)
                 viewModel.insertSaleToTransactions(newTransaction)
             }
             .show()

@@ -1,13 +1,13 @@
-package com.leyon.androidecommercekotlindemo.model.roomdb.database
+package com.leyon.androidecommercekotlindemo.model.storage.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.leyon.androidecommercekotlindemo.model.roomdb.dao.ProductDAO
-import com.leyon.androidecommercekotlindemo.model.roomdb.dao.TransactionsDAO
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.dao.ProductDAO
+import com.leyon.androidecommercekotlindemo.model.storage.dao.TransactionsDAO
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 
 @Database(
     entities = [Products::class, Transactions::class],

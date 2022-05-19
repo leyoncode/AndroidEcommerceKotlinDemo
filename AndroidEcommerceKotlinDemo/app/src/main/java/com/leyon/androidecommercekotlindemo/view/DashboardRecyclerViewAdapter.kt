@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.leyon.androidecommercekotlindemo.R
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import com.leyon.androidecommercekotlindemo.viewmodel.DashboardViewModel
 
 class DashboardRecyclerViewAdapter(val context: Context, val viewModel: DashboardViewModel) : RecyclerView.Adapter<DashboardRecyclerViewAdapter.TransactionViewHolder>()  {

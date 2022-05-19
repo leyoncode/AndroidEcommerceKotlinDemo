@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.leyon.androidecommercekotlindemo.model.repository.ProductRepository
 import com.leyon.androidecommercekotlindemo.model.repository.TransactionsRepository
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

@@ -1,8 +1,8 @@
-package com.leyon.androidecommercekotlindemo.model.roomdb.dao
+package com.leyon.androidecommercekotlindemo.model.storage.dao
 
 import androidx.room.*
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.leyon.androidecommercekotlindemo.model.roomdb.entity
+package com.leyon.androidecommercekotlindemo.model.storage.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

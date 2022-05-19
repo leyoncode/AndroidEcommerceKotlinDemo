@@ -1,10 +1,10 @@
 package com.leyon.androidecommercekotlindemo.model.repository
 
 import android.content.Context
-import com.leyon.androidecommercekotlindemo.model.roomdb.dao.TransactionsDAO
-import com.leyon.androidecommercekotlindemo.model.roomdb.database.ProductsDatabase
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Transactions
+import com.leyon.androidecommercekotlindemo.model.storage.dao.TransactionsDAO
+import com.leyon.androidecommercekotlindemo.model.storage.database.ProductsDatabase
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import kotlinx.coroutines.flow.Flow
 
 class TransactionsRepository(context: Context) {

@@ -11,8 +11,13 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.DialogFragment
 import com.leyon.androidecommercekotlindemo.R
-import com.leyon.androidecommercekotlindemo.model.roomdb.entity.Products
+import com.leyon.androidecommercekotlindemo.model.repository.NotificationLogRepository
+import com.leyon.androidecommercekotlindemo.model.storage.entity.NotificationLog
+import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
@@ -90,7 +95,7 @@ class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
     //send notification
     private fun sendNotification(textTitle : String, textContent : String) {
         val CHANNEL_ID = getString(R.string.channel_id)
-        var builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_notification_icon_24)
             .setContentTitle(textTitle)
             .setContentText(textContent)
@@ -99,11 +104,20 @@ class AddNewProductDialog(val homeViewModel: HomeViewModel) : DialogFragment() {
             .setStyle(NotificationCompat.BigTextStyle().bigText(textContent))
             .setAutoCancel(true)
 
-        //val notificationManager = NotificationManagerCompat.from(requireContext())
         with(NotificationManagerCompat.from(requireContext())) {
             // notificationId is a unique int for each notification that you must define
             notify(0, builder.build())
         }
+
+        //log notification
+        val newNotificationLog = NotificationLog(
+            NotificationLogRepository.getDateTime().toString(),
+            "$textTitle - $textContent"
+        )
+
+        NotificationLogRepository.addNotificationLog(newNotificationLog)
     }
+
+
 
 }
