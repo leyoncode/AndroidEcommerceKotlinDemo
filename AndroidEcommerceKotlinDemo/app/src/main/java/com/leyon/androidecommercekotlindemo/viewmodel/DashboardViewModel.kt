@@ -8,6 +8,7 @@ import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class DashboardViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -48,9 +49,15 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getProductById(id : Long) : Products {
         var x : Products?= null
+
         runBlocking {
             x = transactionRepo.getProductById(id)
         }
+
+        if (x == null) {
+            x = Products("Product not found in stock", 0.0,0)
+        }
+
         return x!!
     }
 }

@@ -46,6 +46,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         runBlocking {
             x = productRepo.getProductById(id)
         }
+
+        if (x == null) {
+            x = Products("Product not found in stock", 0.0,0)
+        }
+
         return x!!
     }
 

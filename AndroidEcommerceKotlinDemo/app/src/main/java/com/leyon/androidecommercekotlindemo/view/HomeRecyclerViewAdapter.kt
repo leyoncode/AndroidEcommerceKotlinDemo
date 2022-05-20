@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leyon.androidecommercekotlindemo.R
@@ -46,7 +47,15 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
         return this.productsList.size
     }
 
-    fun setList(productsList : List<Products>) {
+    fun setList(productsList : MutableList<Products>) {
+        //remove products with 0 stock from list
+
+        productsList.forEachIndexed { index, product ->
+            if (product.productStock <= 0) {
+                productsList.removeAt(index)
+            }
+        }
+
         this.productsList = productsList
         notifyDataSetChanged()
     }
@@ -65,17 +74,24 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
             }
             .setPositiveButton("Confirm") { dialog, which ->
                 // buy product when select confirm
-                val tmpRef = productsList[position] //get a temporary reference to the product
+                val tmpProductRef = productsList[position] //get a temporary reference to the product
 
                 //reducing only one stock for now. later add form to manually select no of items
-                val updateProduct : Products = Products(tmpRef.productName, tmpRef.productPrice, tmpRef.productStock - 1)
-                updateProduct.productId = tmpRef.productId
+                val numOfItemsToBuy = 1
 
-                viewModel.updateProduct(updateProduct) //send updated product to database
+                //verify noOfItemsToBuy
+                if (numOfItemsToBuy > tmpProductRef.productStock && numOfItemsToBuy <= 0) {
+                    Toast.makeText(context,"Invalid number of items", Toast.LENGTH_SHORT).show()
+                } else {
+                    val updateProduct : Products = Products(tmpProductRef.productName, tmpProductRef.productPrice, tmpProductRef.productStock - numOfItemsToBuy)
+                    updateProduct.productId = tmpProductRef.productId
 
-                //add sale transaction
-                val newTransaction : Transactions = Transactions(tmpRef.productId, 1 , tmpRef.productPrice * 1)
-                viewModel.insertSaleToTransactions(newTransaction)
+                    viewModel.updateProduct(updateProduct) //send updated product to database
+
+                    //add sale transaction
+                    val newTransaction : Transactions = Transactions(tmpProductRef.productId, numOfItemsToBuy , tmpProductRef.productPrice * 1)
+                    viewModel.insertSaleToTransactions(newTransaction)
+                }
             }
             .show()
     }

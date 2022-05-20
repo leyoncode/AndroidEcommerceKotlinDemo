@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
 
         val recyclerAdapter = HomeRecyclerViewAdapter(requireContext(), homeViewModel)
         homeViewModel.getProductLiveData().observe(viewLifecycleOwner, Observer {
-            recyclerAdapter.setList(it)
+            recyclerAdapter.setList(it.toMutableList())
         })
 
         val recycler : RecyclerView = view.findViewById<RecyclerView>(R.id.homeRecyclerView)
