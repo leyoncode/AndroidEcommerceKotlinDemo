@@ -18,3 +18,10 @@ Android project for learning/switching from Java to Kotlin
 - working with JSON files using kotlinx functions
 - saving and loading files from internal storage
 - displaying Notifications
+
+##Screenshots
+![App Screenshot - Home Fragment](Documentation/Screenshots/Screenshot_20220522_234519.png)
+![App Screenshot - Add Product Fragment](Documentation/Screenshots/Screenshot_20220522_231736.png)
+![App Screenshot - Buy Product Verification DIalog](Documentation/Screenshots/Screenshot_20220522_234620.png)
+![App Screenshot - Dashboard Fragment](Documentation/Screenshots/Screenshot_20220522_234707.png)
+![App Screenshot - Notifications Fragment](Documentation/Screenshots/Screenshot_20220522_234644.png)
