@@ -20,9 +20,8 @@ Android project for learning/switching from Java to Kotlin
 - displaying Notifications
 
 ##Screenshots
-<br/><img src="Documentation/Screenshots/Screenshot_20220522_234519.png" width="200px">
-![App Screenshot - Home Fragment](Documentation/Screenshots/Screenshot_20220522_234519.png)
-![App Screenshot - Add Product Fragment](Documentation/Screenshots/Screenshot_20220522_231736.png)
-![App Screenshot - Buy Product Verification DIalog](Documentation/Screenshots/Screenshot_20220522_234620.png)
-![App Screenshot - Dashboard Fragment](Documentation/Screenshots/Screenshot_20220522_234707.png)
-![App Screenshot - Notifications Fragment](Documentation/Screenshots/Screenshot_20220522_234644.png)
+<br/><img src="Documentation/Screenshots/Screenshot_20220522_234519.png" width="300px">
+<br/><img src="Documentation/Screenshots/Screenshot_20220522_231736.png" width="300px">
+<br/><img src="Documentation/Screenshots/Screenshot_20220522_234620.png" width="300px">
+<br/><img src="Documentation/Screenshots/Screenshot_20220522_234707.png" width="300px">
+<br/><img src="Documentation/Screenshots/Screenshot_20220522_234644.png" width="300px">
