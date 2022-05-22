@@ -38,7 +38,7 @@ object NotificationLogRepository {
     fun loadFromJsonFile(context : Context) : MutableList<NotificationLog> {
 
         try {
-            val f : File = File(context.filesDir, filename);
+            val f : File = File(context.filesDir, filename)
             val jsonString = f.readText()
 
             val notificationLog : MutableList<NotificationLog> = Json.decodeFromString(jsonString)
@@ -50,6 +50,18 @@ object NotificationLogRepository {
         }
 
         return mutableListOf() //default to empty list if file not found or other error
+    }
+
+    @Synchronized
+    fun deleteJsonFile(context : Context) {
+        try {
+            val f : File = File(context.filesDir, filename)
+            if (f.exists()) {
+                f.delete()
+            }
+        } catch (e : Exception) {
+            Log.e("ErrorLoadFile",e.message.toString())
+        }
     }
 
     fun getDateTime(): LocalDateTime {
