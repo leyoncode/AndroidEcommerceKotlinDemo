@@ -24,7 +24,7 @@
 - saving and loading files from internal storage
 - displaying Notifications
 
-##Screenshots
+## Screenshots
 <br/><img src="Documentation/Screenshots/Screenshot_20220522_234519.png" width="300px">
 <img src="Documentation/Screenshots/Screenshot_20220522_231736.png" width="300px">
 <img src="Documentation/Screenshots/Screenshot_20220522_234620.png" width="300px">
