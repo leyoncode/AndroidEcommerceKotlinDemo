@@ -48,14 +48,6 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
     }
 
     fun setList(productsList : MutableList<Products>) {
-        //remove products with 0 stock from list
-
-        productsList.forEachIndexed { index, product ->
-            if (product.productStock <= 0) {
-                productsList.removeAt(index)
-            }
-        }
-
         this.productsList = productsList
         notifyDataSetChanged()
     }

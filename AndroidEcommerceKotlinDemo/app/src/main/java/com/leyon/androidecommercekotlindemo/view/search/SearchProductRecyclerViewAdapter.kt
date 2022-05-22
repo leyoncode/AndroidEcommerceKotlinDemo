@@ -48,6 +48,7 @@ class SearchProductRecyclerViewAdapter(val context: Context, val viewModel: Sear
 
     fun setList(productList: MutableList<Products>) {
         this.productsList = productList
+        notifyDataSetChanged()
     }
 
     //copied from HomeRecyclerViewAdapter

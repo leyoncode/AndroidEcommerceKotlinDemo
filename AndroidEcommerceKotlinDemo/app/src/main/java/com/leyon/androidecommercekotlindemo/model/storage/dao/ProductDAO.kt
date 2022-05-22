@@ -16,7 +16,7 @@ interface ProductDAO {
     @Delete
     suspend fun deleteProduct(product: Products)
 
-    @Query("SELECT * FROM products ORDER BY productId ASC")
+    @Query("SELECT * FROM products WHERE productStock > 0 ORDER BY productId ASC")
     fun getAllProducts() : Flow<List<Products>>
 
     @Query("SELECT * FROM products WHERE productId = :id LIMIT 1")
