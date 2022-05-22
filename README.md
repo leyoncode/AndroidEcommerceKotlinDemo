@@ -32,4 +32,4 @@
 <img src="Documentation/Screenshots/Screenshot_20220522_234644.png" width="300px">
 
 ## Author
-- [Me](https://www.github.com/leyoncode)
+- [@leyoncode](https://www.github.com/leyoncode)
