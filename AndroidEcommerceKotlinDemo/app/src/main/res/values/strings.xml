@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_search">Search</string>
 
     <string name="channel_name">NewProductNotification</string>
     <string name="channel_description">Notification when new product is added to catalog</string>

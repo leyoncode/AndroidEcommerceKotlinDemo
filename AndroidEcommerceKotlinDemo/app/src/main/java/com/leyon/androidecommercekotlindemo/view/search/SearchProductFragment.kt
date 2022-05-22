@@ -72,6 +72,7 @@ class SearchProductFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(context)
         //recycler.layoutManager = GridLayoutManager(context,2)
         recycler.adapter = recyclerAdapter
+
     }
 
 }
