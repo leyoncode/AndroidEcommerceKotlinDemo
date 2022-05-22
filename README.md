@@ -1,7 +1,12 @@
 
 # Android Ecommerce App
 
-Android project for learning/switching from Java to Kotlin
+### Purpose of project
+- to learn kotlin (moving from java)
+- to practice and review android concepts
+- to upgrade knowledge where some components were depricated or newer way exist
+- to implement as many features as possible since this is a practice project
+- to have some fun! :D
 
 ### Things this project try to demonstrate
 - basic understanding of Kotlin
