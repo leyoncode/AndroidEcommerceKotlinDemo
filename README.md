@@ -21,7 +21,7 @@ Android project for learning/switching from Java to Kotlin
 
 ##Screenshots
 <br/><img src="Documentation/Screenshots/Screenshot_20220522_234519.png" width="300px">
-<br/><img src="Documentation/Screenshots/Screenshot_20220522_231736.png" width="300px">
-<br/><img src="Documentation/Screenshots/Screenshot_20220522_234620.png" width="300px">
-<br/><img src="Documentation/Screenshots/Screenshot_20220522_234707.png" width="300px">
-<br/><img src="Documentation/Screenshots/Screenshot_20220522_234644.png" width="300px">
+<img src="Documentation/Screenshots/Screenshot_20220522_231736.png" width="300px">
+<img src="Documentation/Screenshots/Screenshot_20220522_234620.png" width="300px">
+<img src="Documentation/Screenshots/Screenshot_20220522_234707.png" width="300px">
+<img src="Documentation/Screenshots/Screenshot_20220522_234644.png" width="300px">
