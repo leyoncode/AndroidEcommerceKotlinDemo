@@ -13,6 +13,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leyon.androidecommercekotlindemo.R
 import com.leyon.androidecommercekotlindemo.model.storage.entity.Products
 import com.leyon.androidecommercekotlindemo.model.storage.entity.Transactions
+import com.leyon.androidecommercekotlindemo.view.sendNotification
 import com.leyon.androidecommercekotlindemo.viewmodel.HomeViewModel
 
 class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ProductViewHolder>() {
@@ -79,6 +80,12 @@ class HomeRecyclerViewAdapter(val context: Context, val viewModel: HomeViewModel
                     updateProduct.productId = tmpProductRef.productId
 
                     viewModel.updateProduct(updateProduct) //send updated product to database
+
+                    //send notification about successful buy
+                    sendNotification(context,
+                        "Successfully bought ${tmpProductRef.productName}",
+                        "Bought product ${tmpProductRef.productName}.\nPrice:${tmpProductRef.productPrice * numOfItemsToBuy}"
+                    )
 
                     //add sale transaction
                     val newTransaction : Transactions = Transactions(tmpProductRef.productId, numOfItemsToBuy , tmpProductRef.productPrice * 1)
