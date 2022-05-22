@@ -1,4 +1,4 @@
-package com.leyon.androidecommercekotlindemo.view
+package com.leyon.androidecommercekotlindemo.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

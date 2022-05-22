@@ -28,4 +28,8 @@ class ProductRepository(context: Context) {
     suspend fun getProductById(id : Long) : Products {
         return productDAO.getProductById(id)
     }
+
+    fun searchForProductWithString(searchText : String) :  Flow<List<Products>> {
+        return productDAO.searchForProductWithString(searchText)
+    }
 }

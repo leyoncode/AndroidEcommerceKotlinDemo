@@ -1,4 +1,4 @@
-package com.leyon.androidecommercekotlindemo.view
+package com.leyon.androidecommercekotlindemo.view.dashboard
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ class DashboardRecyclerViewAdapter(val context: Context, val viewModel: Dashboar
             false
         )
 
-        return DashboardRecyclerViewAdapter.TransactionViewHolder(view)
+        return TransactionViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {

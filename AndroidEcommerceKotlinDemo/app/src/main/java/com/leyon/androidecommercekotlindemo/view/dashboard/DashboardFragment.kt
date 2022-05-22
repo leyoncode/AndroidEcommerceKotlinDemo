@@ -1,4 +1,4 @@
-package com.leyon.androidecommercekotlindemo.view
+package com.leyon.androidecommercekotlindemo.view.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leyon.androidecommercekotlindemo.R
@@ -52,6 +51,7 @@ class DashboardFragment : Fragment() {
         ).get(DashboardViewModel::class.java)
 
         val recyclerAdapter = DashboardRecyclerViewAdapter(requireContext(), dashboardViewModel)
+
         dashboardViewModel.getTransactionsLiveData().observe(viewLifecycleOwner, Observer {
             recyclerAdapter.setList(it)
         })

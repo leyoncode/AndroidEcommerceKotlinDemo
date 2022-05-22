@@ -1,4 +1,4 @@
-package com.leyon.androidecommercekotlindemo.view
+package com.leyon.androidecommercekotlindemo.view.notification
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,12 +1,18 @@
-package com.leyon.androidecommercekotlindemo.view
+package com.leyon.androidecommercekotlindemo.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -37,6 +43,8 @@ class HomeFragment : Fragment() {
         return root
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -52,6 +60,7 @@ class HomeFragment : Fragment() {
 
 
         val recyclerAdapter = HomeRecyclerViewAdapter(requireContext(), homeViewModel)
+
         homeViewModel.getProductLiveData().observe(viewLifecycleOwner, Observer {
             recyclerAdapter.setList(it.toMutableList())
         })
@@ -66,6 +75,22 @@ class HomeFragment : Fragment() {
 
         addNewProductFAB.setOnClickListener{
             showAddNewProductDialog(homeViewModel) //homeViewModel needed for database access
+        }
+
+        //search toolbar
+        val searchText = view.findViewById<EditText>(R.id.searchEditText)
+        val searchButton = view.findViewById<Button>(R.id.searchButton)
+
+        searchButton.setOnClickListener {
+            //move to search fragment to display results
+            if (!searchText.text.toString().isNullOrEmpty()) {
+                val action = HomeFragmentDirections.actionNavigationHomeToSearchProductFragment3(
+                    searchText.text.toString()
+                )
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(context, "Search string empty", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
