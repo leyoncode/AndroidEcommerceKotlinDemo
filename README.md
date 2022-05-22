@@ -17,3 +17,4 @@ Android project for learning/switching from Java to Kotlin
 - working with Room database and basic SQL queries
 - working with JSON files using kotlinx functions
 - saving and loading files from internal storage
+- displaying Notifications
