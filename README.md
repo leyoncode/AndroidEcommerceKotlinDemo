@@ -22,7 +22,7 @@
 - working with Room database and basic SQL queries
 - working with JSON files using kotlinx functions
 - saving and loading files from internal storage
-- displaying Notifications
+- displaying Notifications (and keeping a log of it in app)
 
 ## Screenshots
 <br/><img src="Documentation/Screenshots/Screenshot_20220522_234519.png" width="300px">
